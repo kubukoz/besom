@@ -460,7 +460,7 @@ trait DecoderHelpers:
                 innerEither match
                   case Left(error) => throw error
                   case Right(odA)  => odA
-              else throw DecodingError(s"$label: Expected a struct to deserialize Product!")
+              else throw DecodingError(s"$label: Expected a struct to deserialize Product[$p], got: '${innerValue.kind}'")
             }
           } match
             case Failure(exception) => errorLeft(s"$label: Encountered an error", exception)
